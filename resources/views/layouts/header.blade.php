@@ -14,12 +14,16 @@
                     <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
                 </button>
             </div>
-            <div class="relative">
+            
+            <div class="relative group">
                 <button class="flex items-center focus:outline-none">
-                    <div class="h-10 w-10 rounded-full bg-primary-600 flex items-center justify-center text-white font-semibold">AD</div>
-                    <span class="ml-2 text-gray-700">Admin</span>
-                    <i class="fas fa-chevron-down ml-1 text-gray-500"></i>
+                    <div class="h-10 w-10 rounded-full bg-primary-600 flex items-center justify-center text-white font-semibold">
+                        {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
+                    </div>
+                    <span class="ml-2 text-gray-700">{{ Auth::user()->name }}</span>
+                    <i class="fas fa-chevron-down ml-1 text-gray-500 group-hover:rotate-180 transition-transform"></i>
                 </button>
+                
             </div>
         </div>
     </div>

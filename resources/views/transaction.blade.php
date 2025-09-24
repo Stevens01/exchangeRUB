@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes Transactions - ExchangeRUB</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .transaction-card {
@@ -21,16 +22,16 @@
     <header class="bg-white shadow-sm">
         <div class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-exchange-alt text-blue-600 text-2xl"></i>
-                    <span class="text-xl font-bold text-gray-800">ExchangeRUB</span>
+               <div class="logo">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>ExchangeRUB</span>
                 </div>
-                <nav class="hidden md:flex space-x-6">
-                    <a href="{{route('home')}}" class="text-gray-600 hover:text-blue-600 transition">Accueil</a>
-                    <a href="{{ route('exchange_rates') }}" class="text-gray-600 hover:text-blue-600 transition">Taux de change</a>
-                    <a href="{{route('work')}}" class="text-gray-600 hover:text-blue-600 transition">Comment ça marche</a>
-                    <a href="{{route('propos')}}" class="text-gray-600 hover:text-blue-600 transition">À propos</a>
-                </nav>
+               <ul class="nav-links">
+                    <li><a href="{{ route('home') }}">Accueil</a></li>
+                    <li><a href="{{ route('exchange_rates') }}">Taux de change</a></li>
+                    <li><a href="{{ route('work') }}">Comment ça marche</a></li>
+                    <li><a href="{{ route('propos') }}">À propos</a></li>
+                </ul>
                 <div class="flex items-center space-x-4">
                     <span class="text-gray-600">Bonjour, {{ Auth::user()->name }}</span>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
@@ -54,17 +55,6 @@
 
         <!-- Statistiques personnelles -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-white rounded-lg shadow p-6">
-                <div class="flex items-center">
-                    <div class="rounded-full bg-blue-100 p-3 mr-4">
-                        <i class="fas fa-exchange-alt text-blue-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <p class="text-gray-600 text-sm">Transactions totales</p>
-                        <p class="text-2xl font-bold text-gray-800"></p>
-                    </div>
-                </div>
-            </div>
             <div class="bg-white rounded-lg shadow p-6">
                 <div class="flex items-center">
                     <div class="rounded-full bg-green-100 p-3 mr-4">
@@ -161,16 +151,6 @@
                     </div>
                 </div>
                 
-                <div class="mt-4 pt-4 border-t flex justify-between">
-                    <a href="{{ route('exchange.show', $transaction->id) }}" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
-                        <i class="fas fa-eye mr-1"></i> Voir détails
-                    </a>
-                    @if($transaction->status == 'en attente')
-                    <a href="#" class="text-gray-600 hover:text-gray-800 text-sm font-medium">
-                        <i class="fas fa-times mr-1"></i> Annuler
-                    </a>
-                    @endif
-                </div>
             </div>
             @endforeach
         </div>
@@ -181,20 +161,17 @@
                 <table class="min-w-full">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Montant envoyé</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Montant reçu</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Taux</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                        </tr>
+                            
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach($transactions as $transaction)
                         <tr class="hover:bg-gray-50 transition">
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">#{{ $transaction->id }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                                     {{ $transaction->currency_sended }} → {{ $transaction->currency_received }}
@@ -215,17 +192,7 @@
                                 </span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {{ $transaction->created_at->format('d/m/Y H:i') }}
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                <a href="{{ route('exchange.show', $transaction->id) }}" class="text-blue-600 hover:text-blue-900 mr-3">
-                                    <i class="fas fa-eye"></i> Voir
-                                </a>
-                                @if($transaction->status == 'en attente')
-                                <a href="#" class="text-red-600 hover:text-red-900" onclick="return confirm('Annuler cette transaction?')">
-                                    <i class="fas fa-times"></i> Annuler
-                                </a>
-                                @endif
+                                {{ $transaction->created_at->format('d/m/Y à  H:i') }}
                             </td>
                         </tr>
                         @endforeach

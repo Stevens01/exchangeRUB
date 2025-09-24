@@ -8,6 +8,32 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="logo">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>ExchangeRUB</span>
+                </div>
+               <ul class="nav-links">
+                    <li><a href="{{ route('home') }}">Accueil</a></li>
+                    <li><a href="{{ route('exchange_rates') }}">Taux de change</a></li>
+                    <li><a href="{{ route('work') }}">Comment ça marche</a></li>
+                    <li><a href="{{ route('propos') }}">À propos</a></li>
+                </ul>
+                <div class="flex items-center space-x-4">
+                    <span class="text-gray-600">Bonjour, {{ Auth::user()->name }}</span>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                        Déconnexion
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                        @csrf
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <div class="container mx-auto px-4 py-8 max-w-4xl">
         <div class="bg-white rounded-lg shadow-md p-6">
             <!-- En-tête -->
@@ -145,6 +171,51 @@
             </form>
         </div>
     </div>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ExchangeRUB</h3>
+                    <p>La solution simple et sécurisée pour tous vos échanges entre le Rouble Russe et le Franc CFA.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Liens rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="{{ route('home') }}">Accueil</a></li>
+                        <li><a href="{{route('propos')}}">À propos</a></li>
+                        <li><a href="{{ route('exchange_rates') }}">Taux de change</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="{{ route('exchange.create') }}">Échange RUB/FCFA</a></li>
+                        <li><a href="{{ route('exchange.create') }}">Échange FCFA/RUB</a></li>
+                        <li><a href="{{ route('exchange.create') }}">Transfert d'argent</a></li>
+                        <li><a href="{{ route('admin.exchange_rates') }}') }}">Taux en direct</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> rubexchange@mail.ru</li>
+                        <li><i class="fas fa-phone"></i> +7 ... ...-..-..</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Russie</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 ExchangeRUB. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Prévisualisation de l'image

@@ -35,31 +35,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Messages de session -->
-    @if(session('success'))
-    <div class="container mx-auto px-4 mt-6">
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
-            <strong class="font-bold">Succès!</strong>
-            <span class="block sm:inline">{{ session('success') }}</span>
-            <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                <i class="fas fa-check-circle"></i>
-            </span>
-        </div>
-    </div>
-    @endif
-
-    @if(session('error'))
-    <div class="container mx-auto px-4 mt-6">
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
-            <strong class="font-bold">Erreur!</strong>
-            <span class="block sm:inline">{{ session('error') }}</span>
-            <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                <i class="fas fa-exclamation-circle"></i>
-            </span>
-        </div>
-    </div>
-    @endif
     <!-- Converter Section -->
     <section id="converter" class="container">
     <div class="container">
@@ -109,11 +84,12 @@
                     </div>
                     
                     <!-- Bouton pour procéder à l'échange -->
-                    <button type="submit" class="btn btn-secondary">Procéder à l'échange</button>
+                    <button type="submit" class="submit-btn">Procéder à l'échange</button>
                 </div>
         </form>
         </div>
     </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

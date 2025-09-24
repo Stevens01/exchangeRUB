@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>À propos - ExchangeRUB</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .hero-pattern {
@@ -37,18 +38,22 @@
     <header class="bg-white shadow-sm">
         <div class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-exchange-alt text-blue-600 text-2xl"></i>
-                    <span class="text-xl font-bold text-gray-800">ExchangeRUB</span>
+                <div class="flex items-center space-x-32">
+                  <div class="flex items-center justify-between">
+                    <div class="logo">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>ExchangeRUB</span>
+                    </div>
+                    <ul class="nav-links">
+                        <li><a href="{{ route('home') }}">Accueil</a></li>
+                        <li><a href="{{ route('exchange_rates') }}">Taux de change</a></li>
+                        <li><a href="{{ route('work') }}">Comment ça marche</a></li>
+                        <li><a href="{{ route('propos') }}">À propos</a></li>
+                    </ul>
                 </div>
-                <nav class="hidden md:flex space-x-6">
-                    <a href="{{route('home')}}" class="text-gray-600 hover:text-blue-600 transition">Accueil</a>
-                    <a href="{{ route('admin.exchange_rates') }}" class="text-gray-600 hover:text-blue-600 transition">Taux de change</a>
-                    <a href="{{ route('propos') }}" class="text-blue-600 font-medium">À propos</a>
-                </nav>
-                <div class="flex items-center space-x-4">
+                <div class="flex-1 items-center space-x-8">
                     @auth
-                    <span class="text-gray-600">Bonjour, {{ Auth::user()->name }}</span>
+                    <span >Bonjour, {{ Auth::user()->name }}</span>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
                         Déconnexion
                     </a>
@@ -194,7 +199,7 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
