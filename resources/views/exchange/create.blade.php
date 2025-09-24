@@ -90,7 +90,6 @@
         </div>
     </div>
 
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Éléments du DOM

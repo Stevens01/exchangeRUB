@@ -312,7 +312,7 @@
                     <h3>Contact</h3>
                     <ul class="footer-links">
                         <li><i class="fas fa-envelope"></i> rubexchange@mail.ru</li>
-                        <li><i class="fas fa-phone"></i> +7 ... ...-..-..</li>
+                        <li><i class="fas fa-phone"></i> +7 950 857 -08 -91</li>
                         <li><i class="fas fa-map-marker-alt"></i> Russie</li>
                     </ul>
                 </div>
