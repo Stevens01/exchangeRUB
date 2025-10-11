@@ -20,12 +20,7 @@ class ExchangeRateController extends Controller
         return view('admin.exchange_rates', compact('exchangeRates'));
     }
 
-    public function indexU()
-    {
-        $exchangeRates = ExchangeRate::all();
-        
-        return view('exchange_rates', compact('exchangeRates'));
-    }
+    
 
     public function update(Request $request, $id)
     {
@@ -41,7 +36,6 @@ class ExchangeRateController extends Controller
             'to_currency' => $exchangeRate->to_currency,
             'old_rate' => $exchangeRate->rate,
             'new_rate' => $request->rate,
-            'changed_by' => auth()->id()
         ]);
 
         // Mise à jour du taux

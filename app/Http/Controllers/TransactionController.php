@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ExchangeRate;
 use App\Models\Transaction;
 use App\Models\User;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -48,12 +49,18 @@ class TransactionController extends Controller
     
     $converted_amount = $amount * $exchange_rate;
 
+     $payment_numbers = [
+        'FCFA' => Setting::get('payment_number_fcfa', '+229 01 96 45 51 48'),
+        'RUB' => Setting::get('payment_number_rub', '2200702005511220'),
+    ];
+
     return view('exchange.confirm', compact(
         'amount', 
         'from_currency', 
         'to_currency', 
         'converted_amount', 
-        'exchange_rate'
+        'exchange_rate',
+        'payment_numbers'
     ));
 }
 
@@ -146,15 +153,5 @@ class TransactionController extends Controller
         return view('exchange.show', compact('transaction'));
     }
 
-    public function transaction()
-{
-    $transactions = \App\Models\Transaction::where('user_id', Auth::id())
-                    ->orderBy('created_at', 'desc')
-                    ->get();
-    
-    $completedCount = $transactions->where('status', 'approuvé')->count();
-    $pendingCount = $transactions->where('status', 'en attente')->count();
-    
-    return view('transaction', compact('transactions', 'completedCount', 'pendingCount'));
-}
+   
 }

@@ -34,15 +34,7 @@ class DashboardController extends Controller
 
     }
 
-    public function propos()
-    {
-        return view('propos');
-    }
-
-    public function work()
-    {
-        return view('work');
-    }
+    
 
     /**
      * Liste des utilisateurs en attente de validation

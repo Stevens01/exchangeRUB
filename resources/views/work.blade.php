@@ -148,9 +148,8 @@
             </div>
         </div>
     </section>
-    <!-- Footer -->
     <footer>
-        <div class="container">
+        <div class="container mx-auto">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>ExchangeRUB</h3>
@@ -176,15 +175,23 @@
                         <li><a href="{{ route('exchange.create') }}">Échange RUB/FCFA</a></li>
                         <li><a href="{{ route('exchange.create') }}">Échange FCFA/RUB</a></li>
                         <li><a href="{{ route('exchange.create') }}">Transfert d'argent</a></li>
-                        <li><a href="{{ route('admin.exchange_rates') }}') }}">Taux en direct</a></li>
+                        <li><a href="{{ route('admin.exchange_rates') }}">Taux en direct</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Contact</h3>
                     <ul class="footer-links">
                         <li><i class="fas fa-envelope"></i> rubexchange@mail.ru</li>
-                        <li><i class="fas fa-phone"></i> +7 ... ...-..-..</li>
+                        <li><i class="fas fa-phone"></i> +7 950 857-08-91</li>
                         <li><i class="fas fa-map-marker-alt"></i> Russie</li>
+                        <li>
+                            <a href="{{ asset('apk/exchangerub.apk') }}" 
+                            class="hover:text-white transition flex items-center gap-2 text-green-400 hover:text-green-300 font-semibold"
+                            download="ExchangeRUB-App.apk">
+                                <i class="fas fa-download"></i>
+                                Télécharger l'App
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
