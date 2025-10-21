@@ -1,6 +1,6 @@
-@extends('layouts.app')
+<title>Taux de change - ExchangeRUB</title>
 
-@section('title', 'Gestion des Taux de Change - Admin')
+@extends('layouts.app')
 
 @section('content')
 <div class="container mx-auto px-4 py-8">

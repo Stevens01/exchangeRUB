@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ExchangeRUB - Échangez RUB et FCFA en toute simplicité</title>
+
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -411,31 +408,13 @@
             background-color: #f0fff4;
         }
     </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-exchange-alt"></i>
-                    <span>ExchangeRUB</span>
-                </div>
 
-                <!-- Mobile Menu Button -->
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
 
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="{{route('home')}}">Accueil</a></li>
-                    <li><a href="{{ route('exchange_rates') }}">Taux de change</a></li>
-                    <li><a href="{{route('work')}}">Comment ça marche</a></li>
-                    <li><a href="{{route('propos')}}">À propos</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
+@extends('layouts.app')
+
+@section('title','ExchangeRUB - Échangez RUB et FCFA en toute simplicité')
+
+@section('content')
 
     <!-- Hero Section -->
     <section class="hero">
@@ -624,5 +603,5 @@
             });
         });
     </script>
-</body>
-</html>
+
+@endsection

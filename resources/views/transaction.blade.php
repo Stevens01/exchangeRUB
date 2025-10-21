@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Mes Transactions - ExchangeRUB</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
@@ -16,44 +12,17 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
     </style>
-</head>
-<body class="bg-gray-50 min-h-screen">
-    <!-- Header -->
-    <header class="bg-white shadow-sm">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex items-center justify-between">
-               <div class="logo">
-                    <i class="fas fa-exchange-alt"></i>
-                    <span>ExchangeRUB</span>
-                </div>
-               <ul class="nav-links">
-                    <li><a href="{{ route('home') }}">Accueil</a></li>
-                    <li><a href="{{ route('exchange_rates') }}">Taux de change</a></li>
-                    <li><a href="{{ route('work') }}">Comment ça marche</a></li>
-                    <li><a href="{{ route('propos') }}">À propos</a></li>
-                </ul>
-                <div class="flex items-center space-x-4">
-                    <span class="text-gray-600">Bonjour, {{ Auth::user()->name }}</span>
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
-                        Déconnexion
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                        @csrf
-                    </form>
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
+    @extends('layouts.app')
+
+    @section('content')
         <!-- En-tête de page -->
         <div class="mb-8">
             <h1 class="text-3xl font-bold text-gray-800 mb-2">Mes Transactions</h1>
             <p class="text-gray-600">Historique de toutes vos opérations d'échange</p>
         </div>
 
-        <!-- Statistiques personnelles -->
+        <!-- Statistiques -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div class="bg-white rounded-lg shadow p-6">
                 <div class="flex items-center">
@@ -201,52 +170,7 @@
             </div>
         </div>
         @endif
-    </main>
-
-    <footer>
-        <div class="container mx-auto">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>ExchangeRUB</h3>
-                    <p>La solution simple et sécurisée pour tous vos échanges entre le Rouble Russe et le Franc CFA.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Liens rapides</h3>
-                    <ul class="footer-links">
-                        <li><a href="{{ route('home') }}">Accueil</a></li>
-                        <li><a href="{{route('propos')}}">À propos</a></li>
-                        <li><a href="{{ route('exchange_rates') }}">Taux de change</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="{{ route('exchange.create') }}">Échange RUB/FCFA</a></li>
-                        <li><a href="{{ route('exchange.create') }}">Échange FCFA/RUB</a></li>
-                        <li><a href="{{ route('exchange.create') }}">Transfert d'argent</a></li>
-                        <li><a href="{{ route('admin.exchange_rates') }}">Taux en direct</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-envelope"></i> rubexchange@mail.ru</li>
-                        <li><i class="fas fa-phone"></i> +7 950 857-08-91</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Russie</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 ExchangeRUB. Tous droits réservés.</p>
-            </div>
-        </div>
-    </footer>
+    @endsection
 
     <script>
         // Script pour les filtres et interactions
@@ -270,5 +194,3 @@
             }
         });
     </script>
-</body>
-</html>

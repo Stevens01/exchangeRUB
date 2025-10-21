@@ -1,6 +1,6 @@
 <!-- resources/views/admin/payment-settings.blade.php -->
 
-@extends('layouts.app')
+@extends('layouts.dash')
 
 @section('title', 'Paramètres de Paiement - Admin')
 

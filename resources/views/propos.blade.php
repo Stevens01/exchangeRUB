@@ -1,76 +1,40 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À propos - ExchangeRUB</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .hero-pattern {
-            background: linear-gradient(135deg, #4a6cf7 0%, #6a11cb 100%);
-        }
-        .value-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .value-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        .team-member {
-            transition: transform 0.3s ease;
-        }
-        .team-member:hover {
-            transform: scale(1.03);
-        }
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #4a6cf7, #6a11cb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
-</head>
-<body class="bg-gray-50">
-    <!-- Header -->
-    <header class="bg-white shadow-sm">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-32">
-                  <div class="flex items-center justify-between">
-                    <div class="logo">
-                        <i class="fas fa-exchange-alt"></i>
-                        <span>ExchangeRUB</span>
-                    </div>
-                    <ul class="nav-links">
-                        <li><a href="{{ route('home') }}">Accueil</a></li>
-                        <li><a href="{{ route('exchange_rates') }}">Taux de change</a></li>
-                        <li><a href="{{ route('work') }}">Comment ça marche</a></li>
-                        <li><a href="{{ route('propos') }}">À propos</a></li>
-                    </ul>
-                </div>
-                <div class="flex-1 items-center space-x-8">
-                    @auth
-                    <span >Bonjour, {{ Auth::user()->name }}</span>
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
-                        Déconnexion
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                        @csrf
-                    </form>
-                    @else
-                    <a href="{{ route('login') }}" class="text-gray-600 hover:text-blue-600 transition">Connexion</a>
-                    <a href="{{ route('register') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
-                        Inscription
-                    </a>
-                    @endauth
-                </div>
-            </div>
-        </div>
-    </header>
 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="{{asset('css/app.css')}}">
+<title>À propos - ExchangeRUB</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    .hero-pattern {
+        background: linear-gradient(135deg, #4a6cf7 0%, #6a11cb 100%);
+    }
+    .value-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .value-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    .team-member {
+        transition: transform 0.3s ease;
+    }
+    .team-member:hover {
+        transform: scale(1.03);
+    }
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #7692ff, #ffffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+</style>
+
+
+
+@extends('layouts.app')
+
+@section('content')
     <!-- Hero Section -->
     <section class="hero-pattern text-white py-16">
         <div class="container mx-auto px-4 text-center">
@@ -141,19 +105,19 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 <div>
-                    <div class="stat-number">1 000+</div>
+                    <div class="stat-number"><span class="text-withe">1 000+</span></div>
                     <p class="text-blue-100">Clients satisfaits</p>
                 </div>
                 <div>
-                    <div class="stat-number">5M+</div>
+                    <div class="stat-number" style="color: #fff">5M+</div>
                     <p class="text-blue-100">RUB échangés</p>
                 </div>
                 <div>
-                    <div class="stat-number">99.7%</div>
+                    <div class="stat-number" style="color: #fff">99.7%</div>
                     <p class="text-blue-100">Transactions réussies</p>
                 </div>
                 <div>
-                    <div class="stat-number">24/7</div>
+                    <div class="stat-number" style="color: #fff">24/7</div>
                     <p class="text-blue-100">Support client</p>
                 </div>
             </div>
@@ -198,49 +162,4 @@
         </div>
     </section>
 
-    <footer>
-        <div class="container mx-auto">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>ExchangeRUB</h3>
-                    <p>La solution simple et sécurisée pour tous vos échanges entre le Rouble Russe et le Franc CFA.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Liens rapides</h3>
-                    <ul class="footer-links">
-                        <li><a href="{{ route('home') }}">Accueil</a></li>
-                        <li><a href="{{route('propos')}}">À propos</a></li>
-                        <li><a href="{{ route('exchange_rates') }}">Taux de change</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="{{ route('exchange.create') }}">Échange RUB/FCFA</a></li>
-                        <li><a href="{{ route('exchange.create') }}">Échange FCFA/RUB</a></li>
-                        <li><a href="{{ route('exchange.create') }}">Transfert d'argent</a></li>
-                        <li><a href="{{ route('admin.exchange_rates') }}">Taux en direct</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-envelope"></i> rubexchange@mail.ru</li>
-                        <li><i class="fas fa-phone"></i> +7 950 857-08-91</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Russie</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 ExchangeRUB. Tous droits réservés.</p>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+@endsection
