@@ -250,7 +250,7 @@
                 <!-- Informations supplémentaires -->
                 <div class="mb-6">
                     <label for="sender_number" class="block text-gray-700 font-semibold mb-2 text-sm sm:text-base">
-                        <i class="fas fa-phone mr-2"></i>Votre numéro (optionnel)
+                        <i class="fas fa-phone mr-2"></i>Le numéro qui reçois
                     </label>
                     <input type="text" name="sender_number" id="sender_number" 
                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"

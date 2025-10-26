@@ -38,6 +38,10 @@
                     <span class="font-medium text-green-600">{{ number_format($transaction->amount_received, 0, ',', ' ') }} {{ $transaction->currency_received }}</span>
                 </div>
                 <div class="flex justify-between">
+                    <span class="text-gray-600">Numéro qui reçois:</span>
+                    <span class="font-medium text-green-600"> {{ $transaction->sender_number }}</span>
+                </div>
+                <div class="flex justify-between">
                     <span class="text-gray-600">Taux appliqué:</span>
                     <span class="font-medium">1 {{ $transaction->currency_sended }} = {{ $transaction->exchange_rate }} {{ $transaction->currency_received }}</span>
                 </div>
